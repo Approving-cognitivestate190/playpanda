@@ -106,36 +106,6 @@ facebook.com, instagram.com, linkedin.com, x.com, twitter.com, medium.com, googl
 
 Other sites start at Tier 1 and escalate if blocked.
 
-## Use with LLMs
-
-```bash
-# Pipe to Claude
-playpanda https://example.com | claude "Summarize this:"
-
-# Pipe to Ollama
-playpanda https://example.com | ollama run llama3 "What are the key points?"
-
-# Save for RAG
-playpanda https://docs.example.com > corpus/example.md
-```
-
-## Project Structure
-
-```
-src/
-  main.zig          CLI entry point
-  browser.zig       3-tier fetch engine
-  html2md.zig       HTML-to-markdown converter (Zig native, no Python)
-  cdp_client.zig    WebSocket client for Chrome DevTools Protocol
-  cookie_jar.zig    Cookie storage, matching, and serialization
-  auth.zig          Login flow and cookie harvesting
-scripts/
-  fetch_page.py     Tier 3: stealth browser page extraction
-  harvest_cookies.py  Cookie harvesting via CDP
-  install.sh        One-line installer
-  test.sh           Test suite
-```
-
 ## License
 
 [Apache 2.0](LICENSE)
