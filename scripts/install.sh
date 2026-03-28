@@ -59,7 +59,7 @@ elif command -v zig >/dev/null 2>&1; then
   TMPDIR=$(mktemp -d)
   git clone --depth 1 "https://github.com/$REPO.git" "$TMPDIR/playpanda" 2>/dev/null
   cd "$TMPDIR/playpanda"
-  zig build -Doptimize=.ReleaseFast
+  zig build -Doptimize=ReleaseFast
   cp zig-out/bin/playpanda "$BIN_DIR/playpanda"
   rm -rf "$TMPDIR"
   echo "  Built from source"
