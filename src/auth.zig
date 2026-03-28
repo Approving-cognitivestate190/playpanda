@@ -105,10 +105,13 @@ fn harvestViaPython(allocator: std.mem.Allocator, port: u16) !usize {
 
     var proc = std.process.Child.init(&args, allocator);
     proc.stdout_behavior = .Pipe;
-    proc.stderr_behavior = .Ignore;
+    proc.stderr_behavior = .Inherit; // Show errors to user
     proc.stdin_behavior = .Ignore;
 
-    proc.spawn() catch return AuthError.HarvestFailed;
+    proc.spawn() catch {
+        std.debug.print("Failed to run: python3 {s} {s}\n", .{ sp, port_str });
+        return AuthError.HarvestFailed;
+    };
 
     const stdout_pipe = proc.stdout.?;
     const output = stdout_pipe.readToEndAlloc(allocator, 1024) catch return AuthError.HarvestFailed;
