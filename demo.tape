@@ -33,7 +33,7 @@ Enter
 Type "# Works on JS-rendered pages"
 Enter
 Sleep 800ms
-Type "playpanda https://github.com/nicoxiang/lightpanda-io/browser 2>/dev/null | head -15"
+Type "playpanda https://github.com/openclaw/openclaw 2>/dev/null | head -15"
 Sleep 300ms
 Enter
 Sleep 5s
@@ -48,6 +48,17 @@ Type "playpanda https://example.com,https://ziglang.org 2>/dev/null | head -20"
 Sleep 300ms
 Enter
 Sleep 5s
+
+# Paywall / protected site
+Type ""
+Enter
+Type "# Works behind paywalls (Medium, Substack...)"
+Enter
+Sleep 800ms
+Type "playpanda https://medium.com/the-andela-way/graph-databases-why-are-they-important-c438e1a224ae 2>/dev/null | head -20"
+Sleep 300ms
+Enter
+Sleep 15s
 
 # Show help
 Type ""

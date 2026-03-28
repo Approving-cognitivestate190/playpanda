@@ -1,0 +1,2 @@
+# Static WebSocket handshake key (not a secret)
+src/cdp_client.zig:generic-api-key:147

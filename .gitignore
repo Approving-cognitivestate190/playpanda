@@ -1,0 +1,18 @@
+# Zig
+zig-out/
+.zig-cache/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Test artifacts
+test_io
+
+# Editor
+.vscode/
+.idea/
+out/
