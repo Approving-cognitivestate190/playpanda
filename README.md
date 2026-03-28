@@ -8,6 +8,11 @@
 
 # playpanda
 
+[![CI](https://github.com/ancs21/playpanda/actions/workflows/ci.yml/badge.svg)](https://github.com/ancs21/playpanda/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/ancs21/playpanda)](https://github.com/ancs21/playpanda/releases/latest)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
+[![Zig](https://img.shields.io/badge/zig-0.15-orange)](https://ziglang.org)
+
 Fetch any webpage as clean, LLM-ready markdown. Single binary, zero config.
 
 ![demo](demo.gif)
