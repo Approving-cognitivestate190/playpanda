@@ -1,3 +1,11 @@
+```
+ ╭───────────╮
+ │  ■     ■  │
+ │    ▶      │
+ │   ╰──╯   │
+ ╰───────────╯
+```
+
 # playpanda
 
 Fetch any webpage as clean, LLM-ready markdown. Single binary, zero config.
