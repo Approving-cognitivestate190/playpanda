@@ -325,14 +325,37 @@ fn fetchLightpandaCdp(allocator: std.mem.Allocator, url: []const u8, jar: ?*cons
 
 // ── Tier 3: CloakBrowser ──
 
+/// Find a script in known locations.
+pub fn findScript(allocator: std.mem.Allocator, name: []const u8) ![]const u8 {
+    // 1. ~/.playpanda/scripts/ (installed location)
+    if (std.posix.getenv("HOME")) |home| {
+        var buf: [1024]u8 = undefined;
+        if (std.fmt.bufPrint(&buf, "{s}/.playpanda/scripts/{s}", .{ home, name })) |p| {
+            if (std.fs.accessAbsolute(p, .{})) |_| {
+                return try allocator.dupe(u8, p);
+            } else |_| {}
+        } else |_| {}
+    }
+    // 2. scripts/ relative to CWD (dev mode)
+    {
+        var buf: [1024]u8 = undefined;
+        if (std.fmt.bufPrint(&buf, "scripts/{s}", .{name})) |p| {
+            std.fs.cwd().access(p, .{}) catch return error.BinaryNotFound;
+            return try allocator.dupe(u8, p);
+        } else |_| {}
+    }
+    return error.BinaryNotFound;
+}
+
 fn fetchCloakBrowser(allocator: std.mem.Allocator, url: []const u8, wait_ms: u32) ![]const u8 {
+    const script = findScript(allocator, "fetch_page.py") catch return error.CommandFailed;
+    defer allocator.free(script);
     const wait_str = try std.fmt.allocPrint(allocator, "{d}", .{wait_ms});
     defer allocator.free(wait_str);
-    // Timeout: wait_ms + 30s max for browser startup + challenge solving
     const timeout_secs = (wait_ms / 1000) + 30;
     const timeout_str = try std.fmt.allocPrint(allocator, "{d}", .{timeout_secs});
     defer allocator.free(timeout_str);
-    const args = [_][]const u8{ "timeout", timeout_str, "python3", "scripts/fetch_page.py", url, wait_str };
+    const args = [_][]const u8{ "timeout", timeout_str, "python3", script, url, wait_str };
     var child = std.process.Child.init(&args, allocator);
     child.stdout_behavior = .Pipe;
     child.stderr_behavior = .Ignore;

@@ -82,35 +82,8 @@ pub fn loginFlow(allocator: std.mem.Allocator) !void {
 
 /// Harvest cookies by calling the Python helper script.
 fn harvestViaPython(allocator: std.mem.Allocator, port: u16) !usize {
-    // Find the script relative to the binary or in known locations
-    const home = std.posix.getenv("HOME") orelse return AuthError.HarvestFailed;
-
-    var script_buf: [1024]u8 = undefined;
-    var script_path: ?[]const u8 = null;
-
-    // Check next to the source
-    const candidates = [_][]const u8{
-        "scripts/harvest_cookies.py",
-        "../../scripts/harvest_cookies.py",
-    };
-    for (candidates) |rel| {
-        std.fs.cwd().access(rel, .{}) catch continue;
-        script_path = rel;
-        break;
-    }
-
-    // Check in ~/.playpanda/
-    if (script_path == null) {
-        const p = std.fmt.bufPrint(&script_buf, "{s}/.playpanda/harvest_cookies.py", .{home}) catch return AuthError.HarvestFailed;
-        std.fs.accessAbsolute(p, .{}) catch {
-            // Copy the embedded script there
-            // For now, check project dir
-            return AuthError.HarvestFailed;
-        };
-        script_path = p;
-    }
-
-    const sp = script_path orelse return AuthError.HarvestFailed;
+    const sp = @import("browser.zig").findScript(allocator, "harvest_cookies.py") catch return AuthError.HarvestFailed;
+    defer allocator.free(sp);
 
     const port_str = try std.fmt.allocPrint(allocator, "{d}", .{port});
     defer allocator.free(port_str);
