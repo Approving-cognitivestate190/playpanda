@@ -60,6 +60,12 @@ zig build -Doptimize=.ReleaseFast
 cp zig-out/bin/playpanda ~/.local/bin/
 ```
 
+### Use as Agent Skill
+
+```
+npx skills add ancs21/playpanda
+```
+
 ### Dependencies
 
 The installer handles these automatically, or install manually:
@@ -67,12 +73,6 @@ The installer handles these automatically, or install manually:
 - [Lightpanda](https://lightpanda.io/) — headless browser for Tier 2
 - Python 3 + `websockets` — Tier 3 stealth browser and cookie harvesting
 - Chrome/Chromium — for Tier 3 stealth and login flow
-
-## Use as Agent Skill
-
-```
-npx skills add ancs21/playpanda
-```
 
 ## Usage
 
