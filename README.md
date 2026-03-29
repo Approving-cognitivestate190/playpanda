@@ -12,6 +12,7 @@
 [![Release](https://img.shields.io/github/v/release/ancs21/playpanda)](https://github.com/ancs21/playpanda/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![Zig](https://img.shields.io/badge/zig-0.15-orange)](https://ziglang.org)
+[![Binary Size](https://img.shields.io/badge/binary-400KB-green)](https://github.com/ancs21/playpanda/releases/latest)
 
 Fetch any webpage as clean, LLM-ready markdown. Single binary, zero config.
 
